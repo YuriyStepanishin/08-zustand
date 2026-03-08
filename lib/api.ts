@@ -15,7 +15,7 @@ export interface FetchNotesResponse {
 export const fetchNotes = async (
   page: number,
   search?: string,
-  tag?: string
+  tag?: string,
 ): Promise<FetchNotesResponse> => {
   const params: {
     page: number;
@@ -56,4 +56,11 @@ export const deleteNote = async (id: string): Promise<Note> => {
 export const fetchNoteById = async (id: string): Promise<Note> => {
   const response = await axios.get<Note>(`/notes/${id}`);
   return response.data;
+};
+export const getSingleNote = async (id: string) => {
+  const res = await axios.get(`/notes/${id}`);
+  return res.data;
+};
+export const getCategories = async () => {
+  return ["Todo", "Work", "Personal", "Meeting", "Shopping"];
 };
