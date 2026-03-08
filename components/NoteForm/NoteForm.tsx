@@ -53,20 +53,6 @@ export default function NoteForm({ categories }: NoteFormProps) {
     router.back();
   };
 
-  <select
-    id="tag"
-    name="tag"
-    defaultValue={draft.tag}
-    onChange={handleChange}
-    className={css.select}
-  >
-    {categories.map((tag) => (
-      <option key={tag} value={tag}>
-        {tag}
-      </option>
-    ))}
-  </select>;
-
   return (
     <form action={handleSubmit} className={css.form}>
       <div className={css.formGroup}>
@@ -101,11 +87,11 @@ export default function NoteForm({ categories }: NoteFormProps) {
           onChange={handleChange}
           className={css.select}
         >
-          <option value="Todo">Todo</option>
-          <option value="Work">Work</option>
-          <option value="Personal">Personal</option>
-          <option value="Meeting">Meeting</option>
-          <option value="Shopping">Shopping</option>
+          {categories.map((tag) => (
+            <option key={tag} value={tag}>
+              {tag}
+            </option>
+          ))}
         </select>
       </div>
 
